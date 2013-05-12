@@ -7,6 +7,6 @@
 # No minification
 #sass --watch your-project.scss:your-project.css --style expanded
 
-sass --watch style.sass:style.css --style compressed
+sass --watch style.sass:style.css
 
 exit 0
