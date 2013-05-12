@@ -23,6 +23,7 @@ function mpub_custom_post_type() {
     'labels' => $labels,
     'public' => true,
     'has_archive' => true,
+    'menu_position' => 3,
   );
 
   register_post_type( 'book', $args );
