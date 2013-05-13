@@ -1,5 +1,6 @@
 <?
 function mpub_custom_taxonomy(){
-    register_taxonomy('author', 'book');
+    $args = array('label'=>'저자');
+    register_taxonomy('author', 'book', $args);
 }
 add_action('init', 'mpub_custom_taxonomy');
