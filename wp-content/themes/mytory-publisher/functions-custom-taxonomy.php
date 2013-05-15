@@ -75,5 +75,20 @@ function mpub_custom_taxonomy(){
   );
 
   register_taxonomy('book-subject', 'book', $args);
+
+
+  $args = array(
+    'label' => '신간 여부',
+    'hierarchical' => TRUE,
+  );
+  register_taxonomy('new-book', 'book', $args);
+
+
+  $args = array(
+    'label' => '추천 책 여부',
+    'hierarchical' => TRUE,
+  );
+  register_taxonomy('recommend-book', 'book', $args);
+  
 }
 add_action('init', 'mpub_custom_taxonomy');
