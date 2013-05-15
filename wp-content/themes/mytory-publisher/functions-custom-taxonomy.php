@@ -23,7 +23,10 @@ function mpub_custom_taxonomy(){
     'menu_name' => '저자',
   );
 
-  $args = array('labels'=>$labels_author);
+  $args = array(
+    'labels' => $labels_author,
+    'show_admin_column' => TRUE,
+  );
 
   register_taxonomy('book-author', 'book', $args);
 
@@ -48,7 +51,10 @@ function mpub_custom_taxonomy(){
     'menu_name' => '번역자',
   );
 
-  $args = array('labels'=>$labels_translator);
+  $args = array(
+    'labels'=>$labels_translator,
+    'show_admin_column' => TRUE,
+  );
 
   register_taxonomy('translator', 'book', $args);
 
@@ -72,6 +78,7 @@ function mpub_custom_taxonomy(){
   $args = array(
     'labels' => $labels_book_subject,
     'hierarchical' => TRUE,
+    'show_admin_column' => TRUE,
   );
 
   register_taxonomy('book-subject', 'book', $args);
@@ -80,6 +87,7 @@ function mpub_custom_taxonomy(){
   $args = array(
     'label' => '신간 여부',
     'hierarchical' => TRUE,
+    'show_admin_column' => TRUE,
   );
   register_taxonomy('new-book', 'book', $args);
 
@@ -87,8 +95,9 @@ function mpub_custom_taxonomy(){
   $args = array(
     'label' => '추천 책 여부',
     'hierarchical' => TRUE,
+    'show_admin_column' => TRUE,
   );
   register_taxonomy('recommend-book', 'book', $args);
-  
+
 }
 add_action('init', 'mpub_custom_taxonomy');
