@@ -1,0 +1,10 @@
+@charset "utf-8";
+.column-taxonomy-book-author,
+.column-taxonomy-translator,
+.column-taxonomy-new-book,
+.column-taxonomy-recommend-book {
+    width: 7%;
+}
+.column-taxonomy-book-subject {
+    width: 14%;
+}

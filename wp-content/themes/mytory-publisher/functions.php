@@ -66,6 +66,14 @@ function mbt_scripts_styles() {
 add_action( 'wp_enqueue_scripts', 'mbt_scripts_styles' );
 
 /**
+ * 관리자 화면용 CSS
+ */
+function mpub_admin_scripts_styles(){
+  wp_enqueue_style( 'mpub-admin', get_template_directory_uri() . '/admin.css');
+}
+add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
+
+/**
 * 변수의 구성요소를 리턴받는다.
 */
 function getPrintr($var, $title = NULL)
