@@ -25,7 +25,7 @@ function mpub_custom_taxonomy(){
 
   $args = array('labels'=>$labels_author);
 
-  register_taxonomy('author', 'book', $args);
+  register_taxonomy('book-author', 'book', $args);
 
 
   $labels_translator = array(
