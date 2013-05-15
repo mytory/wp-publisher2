@@ -26,5 +26,30 @@ function mpub_custom_taxonomy(){
   $args = array('labels'=>$labels_author);
 
   register_taxonomy('author', 'book', $args);
+
+
+  $labels_translator = array(
+    'name' => '번역자',
+    'singular_name' => '번역자',
+    'search_items' => '번역자 검색',
+    'popular_items' => '많이 쓴 번역자',
+    'all_items' => '번역자 목록',
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => '번역자 수정', 
+    'view_item' => '번역자 보기',
+    'update_item' => '저장',
+    'add_new_item' => '번역자 추가',
+    'new_item_name' => '새 번역자 이름',
+    'separate_items_with_commas' => '여러 명 입력하려면 쉽표(,)로 구분하세요',
+    'add_or_remove_items' => '번역자 추가 혹은 삭제',
+    'choose_from_most_used' => '많이 쓴 번역자 중 선택',
+    'not_found' => '번역자가 없습니다',
+    'menu_name' => '번역자',
+  );
+
+  $args = array('labels'=>$labels_translator);
+
+  register_taxonomy('translator', 'book', $args);
 }
 add_action('init', 'mpub_custom_taxonomy');
