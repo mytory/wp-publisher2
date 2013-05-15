@@ -51,5 +51,29 @@ function mpub_custom_taxonomy(){
   $args = array('labels'=>$labels_translator);
 
   register_taxonomy('translator', 'book', $args);
+
+
+  $labels_book_subject = array(
+    'name' => '주제 분류',
+    'singular_name' => '주제 분류',
+    'search_items' => '주제 분류 검색',
+    'all_items' => '주제 분류 목록',
+    'parent_item' => '부모 주제',
+    'parent_item_colon' => '부모 주제:',
+    'edit_item' => '주제 분류 수정',
+    'view_item' => '주제 분류 보기',
+    'update_item' => '저장',
+    'add_new_item' => '주제 분류 추가',
+    'new_item_name' => '주제 분류명',
+    'not_found' => '주제 분류가 없습니다',
+    'menu_name' => '주제 분류',
+  );
+
+  $args = array(
+    'labels' => $labels_book_subject,
+    'hierarchical' => TRUE,
+  );
+
+  register_taxonomy('book-subject', 'book', $args);
 }
 add_action('init', 'mpub_custom_taxonomy');
