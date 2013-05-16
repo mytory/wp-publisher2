@@ -112,3 +112,4 @@ function printr2($var, $title = NULL)
 
 include 'functions-custom-post-type.php';
 include 'functions-custom-taxonomy.php';
+include 'functions-edit-book.php';
