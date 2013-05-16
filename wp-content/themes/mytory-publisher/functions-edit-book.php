@@ -16,13 +16,12 @@ function mpub_meta_box() {
 
 /**
  * 책 상세 정보 메타 박스 내용 출력
- * @param  [type] $post [description]
- * @return [type]       [description]
+ * @param  Object $post
  */
 function mpub_book_meta_box_inner($post) {
 
   // action쪽 스팸/해킹 방지용 input hidden field
-  wp_nonce_field( plugin_basename( __FILE__ ), 'book_detail' );
+  wp_nonce_field( plugin_basename( __FILE__ ), 'book_detail_nonce' );
 
   ?>
   <table class="form-table">
