@@ -29,7 +29,8 @@ function mpub_book_meta_box_inner($post) {
         <label for="가격">가격</label>
       </th>
       <td>
-        <input type="number" id="가격" class="regular-text" name="가격"> 원
+        <input type="number" id="가격" class="regular-text" name="가격"
+            value="<?=get_post_meta($post->ID, '가격', true)?>"> 원
       </td>
     </tr>
     <tr>
@@ -37,7 +38,8 @@ function mpub_book_meta_box_inner($post) {
         <label for="출간일">출간일</label>
       </th>
       <td>
-        <input type="date" id="출간일" class="regular-text" name="출간일">
+        <input type="date" id="출간일" class="regular-text" name="출간일"
+            value="<?=get_post_meta($post->ID, '출간일', true)?>">
       </td>
     </tr>
     <tr>
@@ -45,7 +47,8 @@ function mpub_book_meta_box_inner($post) {
         <label for="페이지수">페이지수</label>
       </th>
       <td>
-        <input type="number" id="페이지수" class="small-text" name="페이지수"> 페이지
+        <input type="number" id="페이지수" class="small-text" name="페이지수"
+            value="<?=get_post_meta($post->ID, '페이지수', true)?>"> 페이지
       </td>
     </tr>
     <tr>
@@ -53,14 +56,41 @@ function mpub_book_meta_box_inner($post) {
         <label for="출력순서">출력순서</label>
       </th>
       <td>
-        <input type="number" id="출력순서" class="small-text" name="출력순서">
+        <input type="number" id="출력순서" class="small-text" name="출력순서"
+            value="<?=get_post_meta($post->ID, '출력순서', true)?>">
       </td>
     </tr>
   </table>
   <?
 }
 
+// 데이터 저장
+add_action('save_post', 'mpub_save_bookdata');
 
+/**
+ * 책 편집 후 사용자 데이터를 저장한다.
+ * @param  int $post_id
+ */
+function mpub_save_bookdata($post_id){
+
+  if($_POST['post_type'] != 'book'){
+    return;
+  }
+  if ( ! current_user_can('edit_post', $post_id)){
+    return;
+  }
+
+  // nonce 필드 검사
+  if ( ! isset( $_POST['book_detail_nonce'] ) || ! wp_verify_nonce($_POST['book_detail_nonce'], 'save_book_action')){
+    return;
+  }
+
+  // 데이터 저장
+  update_post_meta($post_id, '가격', sanitize_text_field($_POST['가격']));
+  update_post_meta($post_id, '출간일', sanitize_text_field($_POST['출간일']));
+  update_post_meta($post_id, '페이지수', sanitize_text_field($_POST['페이지수']));
+  update_post_meta($post_id, '출력순서', sanitize_text_field($_POST['출력순서']));
+}
 
 
 
