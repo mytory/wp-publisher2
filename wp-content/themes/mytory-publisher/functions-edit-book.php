@@ -21,8 +21,7 @@ function mpub_meta_box() {
 function mpub_book_meta_box_inner($post) {
 
   // action쪽 스팸/해킹 방지용 input hidden field
-  wp_nonce_field( plugin_basename( __FILE__ ), 'book_detail_nonce' );
-
+  wp_nonce_field( 'save_book_action', 'book_detail_nonce' );
   ?>
   <table class="form-table">
     <tr>
