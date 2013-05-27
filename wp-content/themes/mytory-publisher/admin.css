@@ -8,3 +8,6 @@
 .column-taxonomy-book-subject {
     width: 14%;
 }
+.mceIframeContainer {
+  background: white;
+}
