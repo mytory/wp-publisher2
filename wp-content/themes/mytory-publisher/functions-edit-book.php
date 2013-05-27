@@ -60,6 +60,30 @@ function mpub_book_meta_box_inner($post) {
             value="<?=get_post_meta($post->ID, '출력순서', true)?>">
       </td>
     </tr>
+    <tr>
+      <th scope="row">
+        <label for="책_소개">책 소개</label>
+      </th>
+      <td>
+        <? wp_editor(get_post_meta($post->ID, '책_소개', true), '책_소개') ?>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <label for="목차">목차</label>
+      </th>
+      <td>
+        <? wp_editor(get_post_meta($post->ID, '목차', true), '목차') ?>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <label for="저자_소개">저자 소개</label>
+      </th>
+      <td>
+        <? wp_editor(get_post_meta($post->ID, '저자_소개', true), '저자_소개') ?>
+      </td>
+    </tr>
   </table>
   <?
 }
@@ -90,6 +114,9 @@ function mpub_save_bookdata($post_id){
   update_post_meta($post_id, '출간일', $_POST['출간일']);
   update_post_meta($post_id, '페이지수', $_POST['페이지수']);
   update_post_meta($post_id, '출력순서', $_POST['출력순서']);
+  update_post_meta($post_id, '책_소개', $_POST['책_소개']);
+  update_post_meta($post_id, '목차', $_POST['목차']);
+  update_post_meta($post_id, '저자_소개', $_POST['저자_소개']);
 }
 
 
