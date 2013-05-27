@@ -86,10 +86,10 @@ function mpub_save_bookdata($post_id){
   }
 
   // 데이터 저장
-  update_post_meta($post_id, '가격', sanitize_text_field($_POST['가격']));
-  update_post_meta($post_id, '출간일', sanitize_text_field($_POST['출간일']));
-  update_post_meta($post_id, '페이지수', sanitize_text_field($_POST['페이지수']));
-  update_post_meta($post_id, '출력순서', sanitize_text_field($_POST['출력순서']));
+  update_post_meta($post_id, '가격', $_POST['가격']);
+  update_post_meta($post_id, '출간일', $_POST['출간일']);
+  update_post_meta($post_id, '페이지수', $_POST['페이지수']);
+  update_post_meta($post_id, '출력순서', $_POST['출력순서']);
 }
 
 
