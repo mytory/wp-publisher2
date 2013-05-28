@@ -84,6 +84,25 @@ function mpub_book_meta_box_inner($post) {
         <? wp_editor(get_post_meta($post->ID, '저자_소개', true), '저자_소개') ?>
       </td>
     </tr>
+    <?
+    $args = array(
+      'nopaging' => TRUE,
+      'post_type' => 'book',
+      'post__not_in' => array($post->ID),
+      'post_status' => 'publish',
+    );
+    $wp_query = new WP_Query($args);
+    $books = $wp_query->posts;
+    ?>
+    <tr>
+      <th>함께 읽을 책</th>
+      <td>
+        <? foreach ($books as $key => $book) { ?>
+          <input type="checkbox" name="함께_읽을_책[]" id="함께_읽을_책_<?=$key?>">
+          <label for="함께_읽을_책_<?=$key?>"><?=$book->post_title?></label>
+        <? } ?>
+      </td>
+    </tr>
   </table>
   <?
 }
