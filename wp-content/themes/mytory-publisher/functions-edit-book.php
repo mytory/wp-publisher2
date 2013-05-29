@@ -91,15 +91,19 @@ function mpub_book_meta_box_inner($post) {
       'post__not_in' => array($post->ID),
       'post_status' => 'publish',
     );
-    $wp_query = new WP_Query($args);
-    $books = $wp_query->posts;
+
+    // 아래 두 줄은 $books = get_posts($args); 와 같다.
+    $the_query = new WP_Query($args);
+    $books = $the_query->posts;
     ?>
     <tr>
       <th>함께 읽을 책</th>
       <td>
         <? foreach ($books as $key => $book) { ?>
-          <input type="checkbox" name="함께_읽을_책[]" id="함께_읽을_책_<?=$key?>">
-          <label for="함께_읽을_책_<?=$key?>"><?=$book->post_title?></label>
+          <div class="read-together">
+            <input type="checkbox" name="함께_읽을_책[]" id="함께_읽을_책_<?=$key?>">
+            <label for="함께_읽을_책_<?=$key?>"><?=$book->post_title?></label>
+          </div>
         <? } ?>
       </td>
     </tr>
