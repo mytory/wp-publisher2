@@ -99,9 +99,11 @@ function mpub_book_meta_box_inner($post) {
     <tr>
       <th>함께 읽을 책</th>
       <td>
-        <? foreach ($books as $key => $book) { ?>
+        <? 
+        $read_together_books = get_post_meta($post->ID, '함께_읽을_책');
+        foreach ($books as $key => $book) { ?>
           <div class="read-together">
-            <input type="checkbox" name="함께_읽을_책[]" id="함께_읽을_책_<?=$key?>">
+            <input <? if_checked($book->ID, $read_together_books) ?> value="<?=$book->ID?>" type="checkbox" name="함께_읽을_책[]" id="함께_읽을_책_<?=$key?>">
             <label for="함께_읽을_책_<?=$key?>"><?=$book->post_title?></label>
           </div>
         <? } ?>
@@ -140,6 +142,11 @@ function mpub_save_bookdata($post_id){
   update_post_meta($post_id, '책_소개', $_POST['책_소개']);
   update_post_meta($post_id, '목차', $_POST['목차']);
   update_post_meta($post_id, '저자_소개', $_POST['저자_소개']);
+
+  delete_post_meta($post_id, '함께_읽을_책');
+  foreach ($_POST['함께_읽을_책'] as $book_id) {
+    add_post_meta($post_id, '함께_읽을_책', $book_id);
+  }
 }
 
 
