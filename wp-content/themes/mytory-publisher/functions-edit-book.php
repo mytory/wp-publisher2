@@ -38,7 +38,7 @@ function mpub_book_meta_box_inner($post) {
         <label for="출간일">출간일</label>
       </th>
       <td>
-        <input type="date" id="출간일" class="regular-text js-datepicker" name="출간일"
+        <input type="date" id="출간일" class="regular-text" name="출간일"
             value="<?=get_post_meta($post->ID, '출간일', true)?>">
       </td>
     </tr>
