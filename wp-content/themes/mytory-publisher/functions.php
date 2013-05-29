@@ -76,8 +76,7 @@ add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
 /**
 * 변수의 구성요소를 리턴받는다.
 */
-function getPrintr($var, $title = NULL)
-{
+function getPrintr($var, $title = NULL) {
     $dump = '';
     $dump .=  '<div align="left">';
     $dump .=  '<pre style="background-color:#000; color:#00ff00; padding:5px; font-size:14px;">';
@@ -95,8 +94,7 @@ function getPrintr($var, $title = NULL)
 /**
  * 변수의 구성요소를 출력한다.
  */
-function printr($var, $title = NULL)
-{
+function printr($var, $title = NULL) {
     $dump = getPrintr($var, $title);
     echo $dump;
 }
@@ -104,10 +102,49 @@ function printr($var, $title = NULL)
 /**
  * 변수의 구성요소를 출력하고 멈춘다.
  */
-function printr2($var, $title = NULL)
-{
+function printr2($var, $title = NULL) {
     printr($var, $title);
     exit;
+}
+
+/**
+ * input:checkbox, input:radio, select 에서, 현재 값을 표시해 줄 때, 현재 값이 저장된 값과 같은지 
+ * 혹은 저장된 값들 중에 포함돼 있는지(checkbox의 경우) 확인하는 함수.
+ * HTML 길이를 줄이기 위해 만든 거다.
+ * @param  string       $current 현재 input의 value
+ * @param  string|array $compare DB에 저장된 값 혹은 값들의 배열
+ * @return boolean
+ */
+function if_equal_or_in($current, $compare){
+  if(is_array($compare)){
+    return in_array($current, $compare);
+  }else{
+    return $current == $compare;
+  }
+}
+
+/**
+ * input:checkbox나 input:radio 에서 값을 비교해 checked를 출력.
+ * @param  string       $current 현재 input의 value
+ * @param  string|array $compare DB에 저장된 값 혹은 값들의 배열
+ * @return boolean
+ */
+function if_checked($current, $compare){
+  if(if_equal_or_in($current, $compare)){
+    echo 'checked';
+  }
+}
+
+/**
+ * select box 에서 값을 비교해 checked를 출력.
+ * @param  string       $current 현재 select > option의 value
+ * @param  string|array $compare DB에 저장된 값 혹은 값들의 배열
+ * @return boolean
+ */
+function if_selected($current, $compare){
+  if(if_equal_or_in($current, $compare)){
+    echo 'selected';
+  }
 }
 
 include 'functions-custom-post-type.php';
