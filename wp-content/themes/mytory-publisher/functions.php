@@ -75,11 +75,14 @@ function mpub_admin_scripts_styles(){
   wp_enqueue_style( 'jquery-ui-smoothness', 'http://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css');
 
   // script
-  wp_enqueue_script('modernizr', get_template_directory_uri() . '/js/modernizr.input-date.js');
+  wp_enqueue_script('modernizr', get_template_directory_uri() . '/js/modernizr.input-date.js', 
+      array(), FALSE, TRUE);
   wp_enqueue_script('jquery-ui-core');
   wp_enqueue_script('jquery-ui-datepicker');
-  wp_enqueue_script('jquery-ui-datepicker-ko', get_template_directory_uri() . '/js/jquery.ui.datepicker-ko.js');
-  wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js');
+  wp_enqueue_script('jquery-ui-datepicker-ko', get_template_directory_uri() . '/js/jquery.ui.datepicker-ko.js', 
+      array('jquery-ui-datepicker'), FALSE, TRUE);
+  wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js', array(), 
+      FALSE, TRUE);
 }
 add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
 
