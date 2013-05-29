@@ -35,6 +35,15 @@ function mpub_book_meta_box_inner($post) {
     </tr>
     <tr>
       <th scope="row">
+        <label for="isbn">ISBN</label>
+      </th>
+      <td>
+        <input type="text" id="isbn" class="regular-text" name="isbn"
+            value="<?=get_post_meta($post->ID, 'isbn', true)?>">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
         <label for="출간일">출간일</label>
       </th>
       <td>
@@ -136,6 +145,7 @@ function mpub_save_bookdata($post_id){
 
   // 데이터 저장
   update_post_meta($post_id, '가격', $_POST['가격']);
+  update_post_meta($post_id, 'isbn', $_POST['isbn']);
   update_post_meta($post_id, '출간일', $_POST['출간일']);
   update_post_meta($post_id, '페이지수', $_POST['페이지수']);
   update_post_meta($post_id, '출력순서', $_POST['출력순서']);
