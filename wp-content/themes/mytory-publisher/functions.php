@@ -66,10 +66,20 @@ function mbt_scripts_styles() {
 add_action( 'wp_enqueue_scripts', 'mbt_scripts_styles' );
 
 /**
- * 관리자 화면용 CSS
+ * 관리자 화면용 CSS와 js
  */
 function mpub_admin_scripts_styles(){
+  
+  // style
   wp_enqueue_style( 'mpub-admin', get_template_directory_uri() . '/admin.css');
+  wp_enqueue_style( 'jquery-ui-smoothness', 'http://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css');
+
+  // script
+  wp_enqueue_script('modernizr', get_template_directory_uri() . '/js/modernizr.input-date.js');
+  wp_enqueue_script('jquery-ui-core');
+  wp_enqueue_script('jquery-ui-datepicker');
+  wp_enqueue_script('jquery-ui-datepicker-ko', get_template_directory_uri() . '/js/jquery.ui.datepicker-ko.js');
+  wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js');
 }
 add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
 
@@ -80,8 +90,7 @@ function getPrintr($var, $title = NULL) {
     $dump = '';
     $dump .=  '<div align="left">';
     $dump .=  '<pre style="background-color:#000; color:#00ff00; padding:5px; font-size:14px;">';
-    if( $title )
-    {
+    if($title) {
         $dump .=  "<strong style='color:#fff'>{$title} :</strong> \n";
     }
     $dump .= print_r($var, TRUE);
