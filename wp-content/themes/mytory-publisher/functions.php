@@ -81,7 +81,7 @@ function mpub_admin_scripts_styles(){
   wp_enqueue_script('jquery-ui-datepicker');
   wp_enqueue_script('jquery-ui-datepicker-ko', get_template_directory_uri() . '/js/jquery.ui.datepicker-ko.js', 
       array('jquery-ui-datepicker'), FALSE, TRUE);
-  wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js', array(), 
+  wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js', array('jquery'), 
       FALSE, TRUE);
 }
 add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
