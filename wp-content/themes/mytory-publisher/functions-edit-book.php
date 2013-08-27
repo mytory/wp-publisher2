@@ -30,6 +30,8 @@ function mpub_book_meta_box_inner($post) {
       </th>
       <td>
         <a href="#" class="button js-mpub-open-media" id="표지">표지 설정</a>
+        <div class="cover-preview"></div>
+        <input type="text" name="cover_id" id="cover-id">
       </td>
     </tr>
     <tr>
