@@ -26,6 +26,14 @@ function mpub_book_meta_box_inner($post) {
   <table class="form-table">
     <tr>
       <th scope="row">
+        <label for="표지">표지</label>
+      </th>
+      <td>
+        <a href="#" class="button js-mpub-open-media" id="표지">표지 설정</a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
         <label for="가격">가격</label>
       </th>
       <td>
