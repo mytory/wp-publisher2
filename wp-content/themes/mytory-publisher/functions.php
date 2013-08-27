@@ -83,6 +83,11 @@ function mpub_admin_scripts_styles(){
       array('jquery-ui-datepicker'), FALSE, TRUE);
   wp_enqueue_script('mpub-admin', get_template_directory_uri() . '/js/admin.js', array('jquery'), 
       FALSE, TRUE);
+
+  global $current_screen;
+  if( isset( $current_screen->post_type ) && $current_screen->post_type == 'book'){
+      wp_enqueue_script('mpub-media', get_template_directory_uri() . '/js/media.js', array( 'jquery' ), '', true );
+  }
 }
 add_action('admin_enqueue_scripts', 'mpub_admin_scripts_styles');
 
