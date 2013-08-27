@@ -6,8 +6,18 @@ jQuery(document).ready(function($){
 
         e.preventDefault();
 
+        var attributes = {
+            title: '표지 설정',
+            library: {
+                type: 'image'
+            },
+            button: {
+                text: '표지로 설정'
+            }
+        };
+
         // 미디어 라이브러리 프레임 객체 생성, wp.media()의 결과를 두 변수에 할당.
-        mpub_media_frame = wp.media.frames.mpub_media_frame = wp.media();
+        mpub_media_frame = wp.media.frames.mpub_media_frame = wp.media(attributes);
 
         // 미디어 라이브러리 레이어 팝업을 연다
         mpub_media_frame.open();
