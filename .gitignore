@@ -15,3 +15,6 @@ sitemap.xml.gz
 .idea/
 wp-content/themes/mytory-publisher/.sass-cache
 wp-content/themes/mytory-publisher/page-test.php
+nbproject/
+wp-publisher.sublime-project
+wp-publisher.sublime-workspace
