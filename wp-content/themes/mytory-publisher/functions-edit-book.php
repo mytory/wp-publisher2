@@ -30,7 +30,17 @@ function mpub_book_meta_box_inner($post) {
       </th>
       <td>
         <a href="#" class="button js-mpub-open-media" id="표지">표지 설정</a>
-        <div class="cover-preview"></div>
+        <div class="cover-preview">
+          <?
+          // 현재 글과 연결된 특성 이미지의 ID를 가져온다.
+          $cover_id = get_post_thumbnail_id();
+
+          // 연결된 특성이미지가 있다면 표지 프리뷰를 출력한다.
+          if( ! empty($cover_id)){
+              mpub_print_cover_preview($cover_id);
+          }
+          ?>
+        </div>
         <input type="hidden" name="cover_id" id="cover-id">
       </td>
     </tr>
@@ -169,6 +179,9 @@ function mpub_save_bookdata($post_id){
       add_post_meta($post_id, '함께_읽을_책', $book_id);
     }
   }
+
+  // 표지 이미지를 featured image로 지정
+  set_post_thumbnail($post_id, $_POST['cover_id']);
 }
 
 add_action('wp_ajax_mpub_print_cover_preview', 'mpub_print_cover_preview');
