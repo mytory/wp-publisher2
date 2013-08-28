@@ -180,8 +180,15 @@ function mpub_save_bookdata($post_id){
     }
   }
 
-  // 표지 이미지를 featured image로 지정
-  set_post_thumbnail($post_id, $_POST['cover_id']);
+  if( ! empty($_POST['cover_id'])){
+
+    // 표지 이미지를 featured image로 지정
+    set_post_thumbnail($post_id, $_POST['cover_id']);
+  }else{
+
+    // featured image 제거
+    delete_post_thumbnail($post_id);
+  }
 }
 
 add_action('wp_ajax_mpub_print_cover_preview', 'mpub_print_cover_preview');
@@ -199,6 +206,10 @@ function mpub_print_cover_preview($attachment_id = NULL){
   <a href="<?=$edit_link_url?>" target="_blank" class="cover-preview__edit-link">편집</a>
   |
   <a href="<?=$original_img_src?>" target="_blank" class="cover-preview__original-link">원본</a>
+  |
+  <a href="#" class="js-remove-cover">
+    표지 제거
+  </a>
   <?
   if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     die();

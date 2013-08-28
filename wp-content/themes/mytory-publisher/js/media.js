@@ -33,8 +33,19 @@ jQuery(document).ready(function($){
             });
         });
 
-
         // 미디어 라이브러리 레이어 팝업을 연다
         mpub_media_frame.open();
     });
+
+    // .cover-preview가 클릭됐을 때 클릭된 위치에 .js-remove-cover가 있다면 함수를 실행한다.
+    $('.cover-preview').on('click', '.js-remove-cover', function(e){
+
+        // 클릭된 놈의 기본 기능을 막는다. (여기서는, 링크 이동을 막게 된다.)
+        e.preventDefault();
+
+        // input을 비우고 프리뷰 내용도 비운다.
+        $('#cover-id').val('');
+        $('.cover-preview').html('');
+    });
+
 });
