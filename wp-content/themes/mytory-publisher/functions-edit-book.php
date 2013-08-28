@@ -171,5 +171,28 @@ function mpub_save_bookdata($post_id){
   }
 }
 
+add_action('wp_ajax_mpub_print_cover_preview', 'mpub_print_cover_preview');
+add_action('wp_ajax_nopriv_mpub_print_cover_preview', 'mpub_exit');
 
+function mpub_print_cover_preview($attachment_id = NULL){
+  if(empty($attachment_id)){
+    $attachment_id = $_REQUEST['attachment_id'];
+  }
+  $preview_img = wp_get_attachment_image_src( $attachment_id, 'medium');
+  $edit_link_url = get_edit_post_link($attachment_id);
+  $original_img_src = wp_get_attachment_url($attachment_id);
+  ?>
+  <img src="<?=$preview_img[0]?>" alt="" class="cover-preview__img">
+  <a href="<?=$edit_link_url?>" target="_blank" class="cover-preview__edit-link">편집</a>
+  |
+  <a href="<?=$original_img_src?>" target="_blank" class="cover-preview__original-link">원본</a>
+  <?
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    die();
+  }
+}
+
+function mpub_exit(){
+  exit;
+}
 
