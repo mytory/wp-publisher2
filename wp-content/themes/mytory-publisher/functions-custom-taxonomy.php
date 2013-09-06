@@ -101,3 +101,25 @@ function mpub_custom_taxonomy(){
 
 }
 add_action('init', 'mpub_custom_taxonomy');
+
+/**
+ * Filter by custom taxonomy
+ */
+function mpub_print_taxonomy_filter_select() {
+  global $typenow;
+  if($typenow == 'book'){
+    ?>
+    <select name="book-subject">
+      <option value="0">주제 분류</option>
+      <option value="경제">경제</option>
+      <option value="기타">기타</option>
+      <option value="기후변화">기후변화</option>
+      <option value="중동-정치">중동 정치</option>
+      <option value="혁명">혁명</option>
+      <option value="혁명가-시리즈">혁명가 시리즈</option>
+    </select>
+    <?
+  }
+}
+
+add_action('restrict_manage_posts','mpub_print_taxonomy_filter_select');
