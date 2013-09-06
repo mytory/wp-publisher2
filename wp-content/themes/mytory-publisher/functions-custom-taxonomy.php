@@ -106,11 +106,17 @@ add_action('init', 'mpub_custom_taxonomy');
  * Filter by custom taxonomy
  */
 function mpub_print_taxonomy_filter_select() {
+  mpub_print_taxonomy_one_select('book', 'book-subject');
+  mpub_print_taxonomy_one_select('book', 'new-book');
+  mpub_print_taxonomy_one_select('book', 'recommend-book');
+}
+
+function mpub_print_taxonomy_one_select($post_type, $taxonomy){
   global $typenow;
-  if($typenow == 'book') {
-    $taxonomy_info = get_taxonomy('book-subject');
-    $terms = get_terms('book-subject'); ?>
-    <select name="book-subject">
+  if($typenow == $post_type) {
+    $taxonomy_info = get_taxonomy($taxonomy);
+    $terms = get_terms($taxonomy); ?>
+    <select name="<?=$taxonomy?>">
       <option value="0"><?=$taxonomy_info->labels->all_items?></option>
       <? foreach ($terms as $term) { ?>
         <option value="<?=$term->slug?>"><?=$term->name?>(<?=$term->count?>)</option>
