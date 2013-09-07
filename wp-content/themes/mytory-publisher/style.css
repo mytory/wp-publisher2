@@ -1,5 +1,6 @@
 @charset "UTF-8";
-/*Theme Name: Mytory Publisher Site
+/*!
+ *Theme Name: Mytory Publisher Site
  *Theme URI: https://github.com/mytory/wp-publisher
  *Description: Mytory가 만든 출판사용 책 소개 사이트 기본 테마
  *Author: Ahn, Hyoung-woo
@@ -47,7 +48,7 @@
 /*------------------------------------*\
     INUIT.CSS
 \*------------------------------------*/
-/**
+/*!*
  * 
  * inuitcss.com -- @inuitcss -- @csswizardry
  * 
@@ -866,7 +867,7 @@ td {
  */
 .table--bordered th,
 .table--bordered td {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   /* Override this color in your theme stylesheet */ }
   .table--bordered th:empty,
   .table--bordered td:empty {
@@ -1413,7 +1414,7 @@ html.flexbox {
  * 
  */
 .options > li > a {
-  border: 0 solid #cccccc;
+  border: 0 solid #ccc;
   /* Extend in your theme stylesheet */
   border-width: 1px;
   border-left-width: 0; }
@@ -1617,7 +1618,7 @@ html.flexbox {
  */
 .block-list,
 .block-list > li {
-  border: 0 solid #cccccc;
+  border: 0 solid #ccc;
   /* Override this color in your theme stylesheet */ }
 
 .block-list {
@@ -1654,7 +1655,7 @@ html.flexbox {
  */
 .matrix,
 .matrix > li {
-  border: 0 solid #cccccc;
+  border: 0 solid #ccc;
   /* Override this color in your theme stylesheet */ }
 
 .matrix {
@@ -2672,7 +2673,7 @@ html.flexbox {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
+/*!*
  * 
  * @csswizardry -- csswizardry.com/beautons
  */
@@ -3016,3 +3017,7 @@ button, .btn, #commentform #submit, input {
 .wp-caption-text {
   font-size: 0.9em;
   color: #666666; }
+
+.book-subtitle {
+  display: block;
+  font-size: 0.7em; }

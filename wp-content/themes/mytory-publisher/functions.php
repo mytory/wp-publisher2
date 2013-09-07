@@ -167,3 +167,4 @@ function if_selected($current, $compare){
 include 'functions-custom-post-type.php';
 include 'functions-custom-taxonomy.php';
 include 'functions-edit-book.php';
+include 'functions-client.php';
