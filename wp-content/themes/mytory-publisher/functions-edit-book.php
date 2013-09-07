@@ -144,8 +144,10 @@ function mpub_save_bookdata($post_id){
   update_post_meta($post_id, '저자_소개', $_POST['저자_소개']);
 
   delete_post_meta($post_id, '함께_읽을_책');
-  foreach ($_POST['함께_읽을_책'] as $book_id) {
-    add_post_meta($post_id, '함께_읽을_책', $book_id);
+  if(isset($_POST['함께_읽을_책'])){
+    foreach ($_POST['함께_읽을_책'] as $book_id) {
+      add_post_meta($post_id, '함께_읽을_책', $book_id);
+    }
   }
 }
 
